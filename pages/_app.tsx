@@ -1,25 +1,13 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
-import { createContext, useState } from 'react'
-
-interface ThemeContext {
-  theme: string
-  toggleTheme: () => void
-}
-
-export const ThemeContext = createContext<ThemeContext | null>(null)
+import { store } from '@/redux/store'
+import { Provider } from 'react-redux'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState('light')
-
-  const toggleTheme = () => {
-    setTheme((current) => (current === 'light' ? 'dark' : 'light'))
-  }
-
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <Provider store={store}>
       <Component {...pageProps} />
-    </ThemeContext.Provider>
+    </Provider>
   )
 }

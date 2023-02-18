@@ -1,10 +1,11 @@
-import { Button } from 'antd'
+import { getCurrentTheme, toggleTheme } from '@/redux/themeSlice'
 import Head from 'next/head'
-import { useContext } from 'react'
-import { ThemeContext } from './_app'
+import { useDispatch, useSelector } from 'react-redux'
+import { Button } from 'antd'
 
 export default function Home() {
-  const theme = useContext(ThemeContext)
+  const theme = useSelector(getCurrentTheme)
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -14,9 +15,9 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main id={theme?.theme}>
-        <div className='text-center'>Hello {theme?.theme}</div>
-        <Button onClick={theme?.toggleTheme}>Click</Button>
+      <main id={theme}>
+        <div>{theme}</div>
+        <Button onClick={() => dispatch(toggleTheme())}>Click</Button>
       </main>
     </>
   )
