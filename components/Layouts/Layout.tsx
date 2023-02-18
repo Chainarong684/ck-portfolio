@@ -1,8 +1,9 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
+
 import { useSelector } from 'react-redux'
 import { getCurrentTheme } from '@/redux/themeSlice'
+import Footer from './Footer'
+import Header from './Header'
 
 interface LayoutProps {
   children?: React.ReactNode
@@ -12,11 +13,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const theme = useSelector(getCurrentTheme)
 
   return (
-    <>
+    <div id={theme}>
       <Header />
-      <main id={theme}>{children}</main>
+      <main className='container' id={theme}>
+        {children}
+      </main>
       <Footer />
-    </>
+    </div>
   )
 }
 

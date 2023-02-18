@@ -1,6 +1,7 @@
 import { getCurrentTheme, toggleTheme } from '@/redux/themeSlice'
-import { Menu, MenuProps, Switch } from 'antd'
+import { Menu, MenuProps, Switch, Typography } from 'antd'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -16,15 +17,27 @@ const Navbar = () => {
 
   const items: MenuProps['items'] = [
     {
-      label: 'About',
+      label: (
+        <Link href='#about' scroll={false}>
+          About
+        </Link>
+      ),
       key: 'about'
     },
     {
-      label: 'Experience',
+      label: (
+        <Link href='#experience' scroll={false}>
+          Experience
+        </Link>
+      ),
       key: 'experience'
     },
     {
-      label: 'Project',
+      label: (
+        <Link href='#project' scroll={false}>
+          Project
+        </Link>
+      ),
       key: 'project',
       children: [
         {
@@ -38,7 +51,11 @@ const Navbar = () => {
       ]
     },
     {
-      label: 'Contact',
+      label: (
+        <Link href='#contact' scroll={false}>
+          Contact
+        </Link>
+      ),
       key: 'contact'
     }
   ]
@@ -48,8 +65,8 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex items-center justify-between'>
-      <div className='flex items-center'>
+    <div className='flex items-center justify-between h-[80px]'>
+      <div className='flex items-center w-[100px]'>
         <Image
           width={25}
           height={25}
@@ -57,12 +74,20 @@ const Navbar = () => {
           alt={`${theme === 'light' ? 'bulb-on' : 'bulb-off'}`}
           className='mr-1'
         />
-        <p>CK.</p>
+        <h1>CK</h1>
       </div>
 
-      <Menu className='w-full' onClick={handleClickMenu} selectedKeys={[current]} mode='horizontal' items={items} />
+      <Menu
+        id={theme}
+        className='w-full justify-center'
+        onClick={handleClickMenu}
+        selectedKeys={[current]}
+        mode='horizontal'
+        items={items}
+      />
 
       <Switch
+        className='border border-solid border-white'
         checked={theme === 'dark'}
         onChange={handleChangeTheme}
         checkedChildren='Dark'

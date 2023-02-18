@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: unset;
+    font-weight: unset;
+  }
+} */
+
 #light {
   background-color: #fff;
   color: #000;
@@ -10,4 +22,15 @@
 #dark {
   background-color: #000;
   color: #fff;
+}
+
+.ant-switch {
+  background: rgba(0, 0, 0, 0.45);
+}
+.ant-switch-checked {
+  background: #000000 !important;
+}
+
+.ant-menu {
+  transition: none;
 }
