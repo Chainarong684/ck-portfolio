@@ -1,10 +1,10 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
+import { ConfigProvider } from 'antd'
 
 import { store } from '@/redux/store'
 import Layout from '@/components/Layouts/Layout'
-import { ConfigProvider } from 'antd'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -12,7 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <ConfigProvider
         theme={{
           token: {
-            fontFamily: 'var(--font-kanit)'
+            fontFamily: 'var(--font-kanit)',
+            fontSize: 16,
+            borderRadius: 0
           }
         }}>
         <Layout>
