@@ -1,9 +1,11 @@
-import { getCurrentTheme, toggleTheme } from '@/redux/themeSlice'
-import { Menu, MenuProps, Switch, Typography } from 'antd'
+import React, { useState } from 'react'
+import { Menu, MenuProps, Switch } from 'antd'
+import { CloudOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
+import { getCurrentTheme, toggleTheme } from '@/redux/themeSlice'
 
 const Navbar = () => {
   const theme = useSelector(getCurrentTheme)
@@ -67,14 +69,15 @@ const Navbar = () => {
   return (
     <div className='flex items-center justify-between h-[80px]'>
       <div className='flex items-center w-[100px]'>
-        <Image
-          width={25}
-          height={25}
-          src={`/assets/images/${theme === 'light' ? 'bulb-on.svg' : 'bulb-off.svg'}`}
-          alt={`${theme === 'light' ? 'bulb-on' : 'bulb-off'}`}
-          className='mr-1'
-        />
-        <h1>CK</h1>
+        <div className='mr-1'>
+          {theme === 'light' ? (
+            <CloudOutlined style={{ fontSize: 25 }} />
+          ) : (
+            <Image width={25} height={25} src='/assets/images/leaf.svg' alt='leaf' />
+          )}
+        </div>
+
+        <h1>CK.</h1>
       </div>
 
       <Menu
@@ -87,11 +90,11 @@ const Navbar = () => {
       />
 
       <Switch
-        className='border border-solid border-white'
+        // className='border border-solid border-white'
         checked={theme === 'dark'}
         onChange={handleChangeTheme}
-        checkedChildren='Dark'
-        unCheckedChildren='Light'
+        checkedChildren='Nature'
+        unCheckedChildren='Cloud'
       />
     </div>
   )

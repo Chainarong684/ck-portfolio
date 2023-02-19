@@ -1,8 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  important: '#__next',
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-kanit)']
+      },
+      colors: {
+        'primary-light': '#235186',
+        'secondary-light': '#f1f1f1',
+        'primary-dark': '#536162',
+        'secondary-dark': '#f3f4ed'
+      }
+    },
     screens: {
       sm: '576px',
       md: '768px',

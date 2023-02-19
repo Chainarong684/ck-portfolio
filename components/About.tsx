@@ -1,4 +1,3 @@
-import { Typography } from 'antd'
 import React from 'react'
 
 const About = () => {
@@ -11,7 +10,7 @@ const About = () => {
         repellat, beatae voluptates asperiores nam iste error quod animi! Error debitis quam voluptas dignissimos,
         eveniet accusamus quasi! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste labore rem ea! Id sunt
         cum optio nesciunt error? Repudiandae, fugiat natus animi iste consequatur aliquid praesentium veniam voluptas
-        dolore minus!
+        dolore minus! กไฟกไกไกไกไกไ ขัยณรงค์ เกียรติมิ่งมงคล
       </p>
     </div>
   )

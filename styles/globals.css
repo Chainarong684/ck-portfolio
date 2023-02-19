@@ -2,35 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-size: unset;
-    font-weight: unset;
+@layer base {
+  html {
+    font-family: 'var(--font-kanit)';
   }
-} */
+
+  h1 {
+    @apply text-4xl;
+    @apply font-bold;
+  }
+  h2 {
+    @apply text-3xl;
+    @apply font-bold;
+  }
+  h3 {
+    @apply text-2xl;
+    @apply font-bold;
+  }
+  h4 {
+    @apply text-xl;
+    @apply font-semibold;
+  }
+}
+
+:root {
+  --primary-light: #235186;
+  --secondary-light: #f1f1f1;
+  --primary-dark: #536162;
+  --secondary-dark: #f3f4ed;
+}
 
 #light {
-  background-color: #fff;
-  color: #000;
+  color: #235186;
+  background-color: #f1f1f1;
 }
 
 #dark {
-  background-color: #000;
-  color: #fff;
+  color: var(--primary-dark);
+  background-color: var(--secondary-dark);
 }
 
+/* ---------------------------- Ant design custom --------------------------- */
 .ant-switch {
-  background: rgba(0, 0, 0, 0.45);
+  background: var(--primary-light);
 }
 .ant-switch-checked {
-  background: #000000 !important;
+  background: var(--primary-dark) !important;
 }
 
 .ant-menu {
   transition: none;
+}
+
+.ant-menu-horizontal {
+  border: 0;
 }
