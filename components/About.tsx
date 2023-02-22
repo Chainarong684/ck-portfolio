@@ -1,5 +1,5 @@
 import { getCurrentTheme } from '@/redux/themeSlice'
-import { Button } from 'antd'
+import { Button, Divider } from 'antd'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -13,7 +13,9 @@ const About = () => {
   return (
     <section id='about' className='py-20 h-[600px] relative'>
       <div className='w-[50%] ml-20'>
-        <h4>Hi, my name is</h4>
+        <Divider orientation='left'>
+          <h4>0. About me</h4>
+        </Divider>
         <h1>Chainarong Kieatmingmongkol</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut necessitatibus temporibus impedit, molestiae
@@ -27,14 +29,17 @@ const About = () => {
           <Social />
         </div>
       </div>
-      <div className='absolute w-[280px] h-[350px] top-[250px] right-[290px] border-4 border-solid border-primary-light-600'></div>
-      <Image
-        className='absolute top-[200px] right-[250px] hover:origin-top-left hover:rotate-12'
-        src='/assets/images/avatar01.JPEG'
-        width={280}
-        height={350}
-        alt='avatar-photo'
-      />
+      <div className='group/box'>
+        <div className='absolute w-[280px] h-[350px] top-[250px] right-[290px] border-4 border-solid border-primary-light-600 transition delay-150 group-hover/box:-rotate-12'></div>
+        <Image
+          className='absolute top-[200px] right-[257px] transition delay-75 group-hover/box:rotate-12'
+          src='/assets/images/avatar01.JPEG'
+          width={280}
+          height={350}
+          alt='avatar-photo'
+        />
+      </div>
+
       <ResumeModal isOpened={openedResume} handleClose={() => setOpenedResume(false)} />
     </section>
   )

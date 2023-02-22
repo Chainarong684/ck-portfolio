@@ -21,7 +21,7 @@ const Navbar = () => {
     {
       label: (
         <Link href='#about' scroll={false}>
-          About
+          0. About
         </Link>
       ),
       key: 'about'
@@ -29,7 +29,7 @@ const Navbar = () => {
     {
       label: (
         <Link href='#experience' scroll={false}>
-          Experience
+          1. Experience
         </Link>
       ),
       key: 'experience'
@@ -37,7 +37,7 @@ const Navbar = () => {
     {
       label: (
         <Link href='#project' scroll={false}>
-          Project
+          2. Project
         </Link>
       ),
       key: 'project',
@@ -55,7 +55,7 @@ const Navbar = () => {
     {
       label: (
         <Link href='#contact' scroll={false}>
-          Contact
+          3. Contact
         </Link>
       ),
       key: 'contact'
