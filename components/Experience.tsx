@@ -48,10 +48,6 @@ const Experience = () => {
       <List
         itemLayout='vertical'
         size='large'
-        pagination={{
-          align: 'center',
-          pageSize: 3
-        }}
         dataSource={data}
         footer={
           <div>
