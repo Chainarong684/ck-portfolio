@@ -43,12 +43,20 @@ const Navbar = () => {
       key: 'project',
       children: [
         {
-          label: 'Option 1',
-          key: 'setting:1'
+          label: (
+            <Link href='#project' scroll={false}>
+              [0]. Part of me
+            </Link>
+          ),
+          key: 'project:1'
         },
         {
-          label: 'Option 2',
-          key: 'setting:2'
+          label: (
+            <Link href='#stack' scroll={false}>
+              [1]. My Stack
+            </Link>
+          ),
+          key: 'project:2'
         }
       ]
     },
@@ -90,7 +98,7 @@ const Navbar = () => {
       />
 
       <Switch
-        // className='border border-solid border-white'
+        className='w-[90px]'
         checked={theme === 'dark'}
         onChange={handleChangeTheme}
         checkedChildren='Nature'

@@ -1,15 +1,18 @@
 import { getCurrentTheme } from '@/redux/themeSlice'
-import { Button } from 'antd'
+import { Button, Divider } from 'antd'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { MailOutlined } from '@ant-design/icons'
+import Link from 'next/link'
 
 const Contact = () => {
   const theme = useSelector(getCurrentTheme)
   return (
     <section id='contact' className='py-20'>
+      <Divider>
+        <h4>3. Get In Touch</h4>
+      </Divider>
       <div className='flex flex-col items-center w-[400px] mx-auto gap-y-10 text-center'>
-        <h1>Get In Touch</h1>
-
         <p className=''>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore adipisci voluptatibus explicabo similique
           nostrum, totam neque. Ab veritatis saepe distinctio odit blanditiis, dolorem quas voluptatibus aliquam soluta
@@ -21,9 +24,12 @@ const Contact = () => {
           <p>( Cr. Dean Koontz )</p>
         </div>
 
-        <Button className={theme === 'light' ? 'btn-light' : 'btn-dark'}>
-          <a href='mailto:9k.chainarong@gmail.com'>Glad to see you</a>
-        </Button>
+        <Link href='mailto:9k.chainarong@gmail.com'>
+          <Button className={`flex items-center hover:scale-110 ${theme === 'light' ? 'btn-light' : 'btn-dark'}`}>
+            <MailOutlined />
+            Glad to see you
+          </Button>
+        </Link>
       </div>
     </section>
   )

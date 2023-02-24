@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import ResumeModal from './ResumeModal'
 import Social from './Social'
+import { PrinterOutlined } from '@ant-design/icons'
 
 const About = () => {
   const theme = useSelector(getCurrentTheme)
@@ -12,10 +13,10 @@ const About = () => {
 
   return (
     <section id='about' className='py-20 h-[600px] relative'>
+      <Divider orientation='left'>
+        <h4>0. About me</h4>
+      </Divider>
       <div className='w-[50%] ml-20'>
-        <Divider orientation='left'>
-          <h4>0. About me</h4>
-        </Divider>
         <h1>Chainarong Kieatmingmongkol</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut necessitatibus temporibus impedit, molestiae
@@ -23,7 +24,10 @@ const About = () => {
           eveniet accusamus quasi! Lorem ipsum, dolor sit
         </p>
         <div className='mt-10 flex items-center gap-x-4'>
-          <Button onClick={() => setOpenedResume(true)} className={theme === 'light' ? 'btn-light' : 'btn-dark'}>
+          <Button
+            onClick={() => setOpenedResume(true)}
+            className={`flex items-center hover:scale-110 ${theme === 'light' ? 'btn-light' : 'btn-dark'}`}>
+            <PrinterOutlined />
             Resume
           </Button>
           <Social />
