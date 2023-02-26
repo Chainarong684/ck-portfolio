@@ -13,8 +13,8 @@ const Experience = () => {
       description: 'Software house, Tech company, Training, Outsource',
       content:
         'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-      displayImage1: '/assets/images/codemobiles-01.png',
-      displayImage2: '/assets/images/codemobiles-02.svg',
+      displayImage1: '/assets/images/codemobiles-01.svg',
+      displayImage2: '/assets/images/codemobiles-02.png',
       role: 'Developer',
       hireType: 'Full Time',
       experience: '3 Years'
@@ -40,7 +40,7 @@ const Experience = () => {
     </Space>
   )
   return (
-    <section id='experience' className='py-20'>
+    <section id='experience' className='py-10'>
       <Divider orientation='right'>
         <h4>1. Experience</h4>
       </Divider>

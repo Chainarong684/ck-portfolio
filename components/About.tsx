@@ -1,18 +1,16 @@
 import { getCurrentTheme } from '@/redux/themeSlice'
 import { Button, Divider } from 'antd'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import ResumeModal from './ResumeModal'
 import Social from './Social'
 import { PrinterOutlined } from '@ant-design/icons'
 
 const About = () => {
   const theme = useSelector(getCurrentTheme)
-  const [openedResume, setOpenedResume] = useState(false)
 
   return (
-    <section id='about' className='py-20 h-[600px] relative'>
+    <section id='about' className='py-10 h-[600px] relative'>
       <Divider orientation='left'>
         <h4>0. About me</h4>
       </Divider>
@@ -24,9 +22,7 @@ const About = () => {
           eveniet accusamus quasi! Lorem ipsum, dolor sit
         </p>
         <div className='mt-10 flex items-center gap-x-4'>
-          <Button
-            onClick={() => setOpenedResume(true)}
-            className={`flex items-center hover:scale-110 ${theme === 'light' ? 'btn-light' : 'btn-dark'}`}>
+          <Button className={`flex items-center hover:scale-110 ${theme === 'light' ? 'btn-light' : 'btn-dark'}`}>
             <PrinterOutlined />
             Resume
           </Button>
@@ -43,8 +39,6 @@ const About = () => {
           alt='avatar-photo'
         />
       </div>
-
-      <ResumeModal isOpened={openedResume} handleClose={() => setOpenedResume(false)} />
     </section>
   )
 }

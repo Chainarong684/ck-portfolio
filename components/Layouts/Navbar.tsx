@@ -37,7 +37,7 @@ const Navbar = () => {
     {
       label: (
         <Link href='#project' scroll={false}>
-          2. Project
+          2. Projects
         </Link>
       ),
       key: 'project',

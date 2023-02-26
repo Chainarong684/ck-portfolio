@@ -1,19 +1,17 @@
 import { Modal } from 'antd'
 import React from 'react'
 
-interface ResumeModalProps {
+interface LineModalProps {
   isOpened: boolean
   handleClose: () => void
 }
 
-const ResumeModal: React.FC<ResumeModalProps> = ({ isOpened, handleClose }) => {
+const LineModal: React.FC<LineModalProps> = ({ isOpened, handleClose }) => {
   return (
-    <Modal title='Basic Modal' open={isOpened} onCancel={() => handleClose()}>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+    <Modal footer open={isOpened} onCancel={() => handleClose()}>
+      <iframe className='border-none h-[540px] w-full' src='https://line.me/ti/p/leoleoleo684' title='LINE@'></iframe>
     </Modal>
   )
 }
 
-export default ResumeModal
+export default LineModal

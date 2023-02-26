@@ -8,7 +8,7 @@ import Link from 'next/link'
 const Contact = () => {
   const theme = useSelector(getCurrentTheme)
   return (
-    <section id='contact' className='py-20'>
+    <section id='contact' className='py-10'>
       <Divider>
         <h4>3. Get In Touch</h4>
       </Divider>
