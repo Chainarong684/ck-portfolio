@@ -85,7 +85,9 @@ const Navbar = () => {
           )}
         </div>
 
-        <h1>CK.</h1>
+        <h1>
+          <Link href='/'>CK</Link>
+        </h1>
       </div>
 
       <Menu

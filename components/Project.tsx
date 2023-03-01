@@ -55,13 +55,19 @@ const Project = () => {
           }}
           renderItem={(item) => (
             <List.Item style={{ padding: 10, margin: 0 }}>
-              <div className='flex flex-col shadow-lg transition hover:scale-105 w-[300px] h-[300px]'>
-                <Image alt='showcase' width={300} height={300} src='/assets/images/hello.jpeg' />
+              <div className='flex flex-col shadow-lg rounded-xl transition hover:scale-105 w-[300px] h-[300px]'>
+                <Image
+                  className='rounded-t-xl'
+                  alt='showcase'
+                  width={300}
+                  height={300}
+                  src='/assets/images/hello.jpeg'
+                />
 
                 <div className='flex-1 p-2 flex flex-col justify-between'>
                   <div className='flex-1'>Lorem ipsum dolor sielit. Perspiciatis sint eveniet</div>
                   <div className='flex justify-between'>
-                    <div className='flex-1'>a</div>
+                    <div className='flex-1'></div>
                     <Button
                       className='flex justify-center items-center hover:cursor-pointer'
                       shape='circle'

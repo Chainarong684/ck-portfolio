@@ -49,11 +49,11 @@ const Experience = () => {
         itemLayout='vertical'
         size='large'
         dataSource={data}
-        footer={
-          <div>
-            <p>{`Even currently my journey is short but doesn't mean my energy and my vision is short`}</p>
-          </div>
-        }
+        // footer={
+        //   <div>
+        //     <p>{`Even currently my journey is short but doesn't mean my energy and my vision is short`}</p>
+        //   </div>
+        // }
         renderItem={(item) => (
           <List.Item
             key={item.title}
