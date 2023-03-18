@@ -3,7 +3,8 @@ import { GithubOutlined, LinkedinOutlined, FacebookOutlined, InstagramOutlined }
 import { Button } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
-import LineModal from './ResumeModal'
+
+import CustomModal from './CustomModal'
 
 const Social = () => {
   const [openedModal, setOpenedModal] = useState(false)
@@ -62,7 +63,9 @@ const Social = () => {
         />
       </Link>
 
-      <LineModal isOpened={openedModal} handleClose={() => setOpenedModal(false)} />
+      <CustomModal isOpened={openedModal} handleClose={() => setOpenedModal(false)}>
+        <iframe className='border-none h-[540px] w-full' src='https://line.me/ti/p/leoleoleo684' title='LINE@'></iframe>
+      </CustomModal>
     </div>
   )
 }

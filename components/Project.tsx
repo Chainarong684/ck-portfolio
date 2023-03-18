@@ -1,34 +1,30 @@
 import { Button, Divider, List } from 'antd'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import Stack from './Stack'
 import { ExportOutlined } from '@ant-design/icons'
+import Link from 'next/link'
+import CustomModal from './CustomModal'
 
 const Project = () => {
+  const [openedModal, setOpenedModal] = useState(false)
+
   const data = [
     {
-      title: 'Title 1'
+      image: '/assets/images/projects/project_sdu.png',
+      alt: 'sdu',
+      title: 'ระบบวัดและแสดงผลค่าฝุ่นละอองภายในมหาวิทยาลัยสวนดุสิต',
+      description: 'วัดค่าฝุ่นละอองภายในมหาวิทยาลัยโดยรับค่าจากเซนเซอร์และเก็บลงฐานข้อมูล(beta)',
+      url: 'http://5911011940035.sci.dusit.ac.th/index.php',
+      tools: 'PHP, MySQL, NodeMCU'
     },
     {
-      title: 'Title 2'
-    },
-    {
-      title: 'Title 3'
-    },
-    {
-      title: 'Title 4'
-    },
-    {
-      title: 'Title 5'
-    },
-    {
-      title: 'Title 6'
-    },
-    {
-      title: 'Title 5'
-    },
-    {
-      title: 'Title 6'
+      image: '/assets/images/projects/posposco.png',
+      alt: 'posposco',
+      title: 'POSPOS',
+      description: 'หน้าเว็บหลักแสดงรายละเอียดโปรแกรมสินค้าและอุปกรณ์รวมถึงระบบสร้างใบเสนอราคา',
+      url: 'https://pospos.co',
+      tools: '(SSR)EJS, MongoDB'
     }
   ]
 
@@ -55,28 +51,39 @@ const Project = () => {
           }}
           renderItem={(item) => (
             <List.Item style={{ padding: 10, margin: 0 }}>
-              <div className='flex flex-col shadow-lg rounded-xl transition hover:scale-105 w-[300px] h-[300px]'>
+              <div
+                className='flex flex-col shadow-lg rounded-xl transition hover:scale-105 w-[300px] h-[300px] hover:cursor-pointer'
+                onClick={() => setOpenedModal(true)}>
                 <Image
-                  className='rounded-t-xl'
-                  alt='showcase'
+                  className='rounded-t-xl object-cover object-top h-[150px]'
+                  alt={item.alt}
                   width={300}
-                  height={300}
-                  src='/assets/images/hello.jpeg'
+                  height={150}
+                  src={item.image}
                 />
 
                 <div className='flex-1 p-2 flex flex-col justify-between'>
-                  <div className='flex-1'>Lorem ipsum dolor sielit. Perspiciatis sint eveniet</div>
-                  <div className='flex justify-between'>
-                    <div className='flex-1'></div>
-                    <Button
-                      className='flex justify-center items-center hover:cursor-pointer'
-                      shape='circle'
-                      type='text'
-                      icon={<ExportOutlined />}
-                    />
+                  <div className='flex-1'>{item.title}</div>
+                  <div className='flex-1'>&nbsp;&nbsp;&nbsp;&nbsp;{item.description}</div>
+                  <div className='flex justify-between border-t'>
+                    <div className='flex-1'>{item.tools}</div>
+                    <Link href={item.url} target='_blank'>
+                      <Button
+                        className='flex justify-center items-center hover:cursor-pointer'
+                        shape='circle'
+                        type='text'
+                        icon={<ExportOutlined />}
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>
+              <CustomModal isOpened={openedModal} handleClose={() => setOpenedModal(false)}>
+                {item.title}
+                <div className='flex justify-center'>
+                  <Image src={item.image} width={300} height={300} alt={item.alt} />
+                </div>
+              </CustomModal>
             </List.Item>
           )}
         />

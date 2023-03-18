@@ -21,9 +21,9 @@ const Experience = () => {
     },
     {
       href: '#',
-      title: `Looking for opportunity and new challenge`,
+      title: `Looking for new opportunity and new challenge`,
       avatar: '',
-      description: 'I hopefully that someday we will meet.',
+      description: '',
       content: '',
       displayImage1: '',
       displayImage2: '',
