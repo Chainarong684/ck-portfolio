@@ -77,11 +77,11 @@ const Navbar = () => {
   return (
     <div className='flex items-center justify-between h-[80px]'>
       <div className='flex items-center w-[100px]'>
-        <div className='mr-1'>
+        <div className='hidden md:flex mr-1'>
           {theme === 'light' ? (
             <CloudOutlined style={{ fontSize: 25 }} />
           ) : (
-            <Image width={25} height={25} src='/assets/images/leaf.svg' alt='leaf' />
+            <Image width={35} height={35} src='/assets/images/leaf.svg' alt='leaf' />
           )}
         </div>
 
@@ -92,6 +92,7 @@ const Navbar = () => {
 
       <Menu
         id={theme}
+        style={{ minWidth: 0, flex: 'auto' }}
         className='w-full justify-center'
         onClick={handleClickMenu}
         selectedKeys={[current]}
@@ -100,12 +101,19 @@ const Navbar = () => {
       />
 
       <Switch
-        className='w-[90px]'
+        className='hidden md:flex w-[90px]'
         checked={theme === 'dark'}
         onChange={handleChangeTheme}
         checkedChildren='Nature'
         unCheckedChildren='Cloud'
       />
+      <div className='flex md:hidden mr-1' onClick={() => handleChangeTheme()}>
+        {theme === 'light' ? (
+          <CloudOutlined style={{ fontSize: 25 }} />
+        ) : (
+          <Image width={35} height={35} src='/assets/images/leaf.svg' alt='leaf' />
+        )}
+      </div>
     </div>
   )
 }

@@ -12,6 +12,7 @@ const Project = () => {
 
   const data = [
     {
+      index: 0,
       image: '/assets/images/projects/posposco.png',
       alt: 'posposco',
       title: 'POSPOS',
@@ -20,6 +21,7 @@ const Project = () => {
       tools: 'EJS, MongoDB'
     },
     {
+      index: 1,
       image: '/assets/images/projects/goposposco.png',
       alt: 'goposposco',
       title: 'ระบบ Point of sale (POS)',
@@ -28,6 +30,7 @@ const Project = () => {
       tools: 'Angular, Node.js, MongoDB'
     },
     {
+      index: 2,
       image: '/assets/images/projects/shopposposco.png',
       alt: 'shopposposco',
       title: 'ระบบ E-commerce',
@@ -37,6 +40,7 @@ const Project = () => {
       tools: 'Next.js, Nest.js, MongoDB'
     },
     {
+      index: 3,
       image: '/assets/images/projects/hr.png',
       alt: 'hrzoft',
       title: 'HR-Zoft',
@@ -45,6 +49,7 @@ const Project = () => {
       tools: 'Next.js'
     },
     {
+      index: 4,
       image: '/assets/images/projects/gohr.png',
       alt: 'gohrzoft',
       title: 'ระบบ บริหารจัดการทรัพยากรบุคคล(HR)',
@@ -54,6 +59,7 @@ const Project = () => {
       tools: 'React, Nest.js, MongoDB'
     },
     {
+      index: 5,
       image: '/assets/images/projects/shopposposco.png',
       alt: 'portal',
       title: 'ระบบ Portal',
@@ -62,6 +68,7 @@ const Project = () => {
       tools: 'React, Nest.js, MongoDB'
     },
     {
+      index: 6,
       image: '/assets/images/projects/sdu.png',
       alt: 'sdu',
       title: 'ระบบวัดและแสดงผลค่าฝุ่นละอองภายในมหาวิทยาลัยสวนดุสิต',
@@ -70,6 +77,7 @@ const Project = () => {
       tools: 'PHP, MySQL, NodeMCU'
     },
     {
+      index: 7,
       image: '/assets/images/projects/sdu.png',
       alt: 'stripe',
       title: 'ระบบ Payment Gateway (Stripe)',
@@ -79,6 +87,7 @@ const Project = () => {
       tools: 'Stripe'
     },
     {
+      index: 8,
       image: '/assets/images/projects/sdu.png',
       alt: '2c2p',
       title: 'ระบบ Payment Gateway (2C2P)',
@@ -88,11 +97,12 @@ const Project = () => {
       tools: '2C2P'
     },
     {
-      image: '/assets/images/projects/sdu.png',
+      index: 9,
+      image: '/assets/images/projects/policy.jpg',
       alt: 'more',
       title: 'Secret',
-      description: 'Another project that can not present by privacy and condition term of client',
-      url: '#',
+      description: 'Another project that can not present by privacy and terms condition of client',
+      url: '',
       tools: '🤐'
     }
   ]
@@ -123,11 +133,11 @@ const Project = () => {
             align: 'center',
             pageSize: 6
           }}
-          renderItem={(item, index) => (
+          renderItem={(item) => (
             <List.Item style={{ padding: 10, margin: 0 }}>
               <div
                 className='flex flex-col shadow-lg rounded-xl transition hover:scale-105 w-[300px] h-[300px] hover:cursor-pointer'
-                onClick={() => handleSelectProject(index)}>
+                onClick={() => handleSelectProject(item.index)}>
                 <Image
                   className='rounded-t-xl object-cover object-top h-[150px]'
                   alt={item.alt}
@@ -137,7 +147,9 @@ const Project = () => {
                 />
 
                 <div className='flex-1 p-2 flex flex-col justify-between'>
-                  <div className='flex'>{item.title}</div>
+                  <div className='flex'>
+                    <b>{item.title}</b>
+                  </div>
                   <div className='flex-1'>&nbsp;&nbsp;&nbsp;&nbsp;{item.description}</div>
                   <div className='flex items-center justify-between border-t'>
                     <div className='flex-1'>{item.tools}</div>
