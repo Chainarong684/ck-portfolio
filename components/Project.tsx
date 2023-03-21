@@ -60,11 +60,11 @@ const Project = () => {
     },
     {
       index: 5,
-      image: '/assets/images/projects/shopposposco.png',
+      image: '/assets/images/projects/portal.png',
       alt: 'portal',
       title: 'ระบบ Portal',
       description: 'Admin Portal หน้าบริหารจัดการลูกค้าและการแสดงผลที่หน้าเว็บหลัก บทความ, แพคเกจ, อุปกรณ์',
-      url: '#',
+      url: '',
       tools: 'React, Nest.js, MongoDB'
     },
     {
