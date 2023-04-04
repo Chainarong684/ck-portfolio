@@ -56,6 +56,7 @@ const Experience = () => {
         // }
         renderItem={(item) => (
           <List.Item
+            className='flex flex-col md:flex-row gap-4'
             key={item.title}
             actions={[
               <IconText icon={SafetyCertificateOutlined} text={item.role} key='list-vertical-star-o' />,

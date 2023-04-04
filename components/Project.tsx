@@ -35,7 +35,7 @@ const Project = () => {
       alt: 'shopposposco',
       title: 'ระบบ E-commerce',
       description:
-        'ร้านค้าออนไลน์ E-commerce เชื่อมต่อกับระบบ POSPOS แสดงรายการสินค้า รับออเดอร์เมื่อลูกค้าเลือกสินค้าและชำระเงิน',
+        'ร้านค้าออนไลน์ เชื่อมต่อกับระบบ POSPOS แสดงรายการสินค้า รับออเดอร์เมื่อลูกค้าเลือกสินค้าและชำระเงิน',
       url: 'https://shop.pospos.co',
       tools: 'Next.js, Nest.js, MongoDB'
     },
@@ -78,29 +78,38 @@ const Project = () => {
     },
     {
       index: 7,
-      image: '/assets/images/projects/sdu.png',
+      image: '/assets/images/projects/stripe-checkout.png',
       alt: 'stripe',
       title: 'ระบบ Payment Gateway (Stripe)',
       description:
         'การรับชำระเงินที่มาตรฐาน ผ่านบัตรเดบิต-เครดิต ธนาคารภายในหรือนอก และช่องทางชำระเงินออนไลน์รวมถึง QR Scan',
-      url: '',
+      url: 'https://stripe.com/en-th',
       tools: 'Stripe'
     },
     {
       index: 8,
-      image: '/assets/images/projects/sdu.png',
+      image: '/assets/images/projects/2c2p-checkout.png',
       alt: '2c2p',
       title: 'ระบบ Payment Gateway (2C2P)',
       description:
         'การรับชำระเงินที่มาตรฐาน ผ่านบัตรเดบิต-เครดิต ธนาคารภายในหรือนอก และช่องทางชำระเงินออนไลน์รวมถึง QR Scan',
-      url: '',
+      url: 'https://2c2p.com/',
       tools: '2C2P'
     },
     {
       index: 9,
+      image: '/assets/images/projects/gopos.png',
+      alt: '2c2p',
+      title: 'Landing Page',
+      description: 'หน้าเว็บแสดงรายละเอียดสินค้าและอุปกรณ์',
+      url: '',
+      tools: 'HTML, CSS, Javascript'
+    },
+    {
+      index: 10,
       image: '/assets/images/projects/policy.jpg',
       alt: 'more',
-      title: 'Secret',
+      title: 'More',
       description: 'Another project that can not present by privacy and terms condition of client',
       url: '',
       tools: '🤐'
@@ -118,7 +127,7 @@ const Project = () => {
         <h4>2. Projects</h4>
       </Divider>
 
-      <div className='mx-40 my-10'>
+      <div className='lg:mx-40 my-10'>
         <List
           className='w-full'
           grid={{
@@ -126,7 +135,7 @@ const Project = () => {
             gutter: 0,
             xs: 1,
             sm: 2,
-            md: 3
+            md: 2
           }}
           dataSource={data}
           pagination={{
