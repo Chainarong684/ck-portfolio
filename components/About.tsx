@@ -1,5 +1,5 @@
 import { getCurrentTheme } from '@/redux/themeSlice'
-import { Button, Divider } from 'antd'
+import { Button, Divider, Typography } from 'antd'
 import Image from 'next/image'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -15,12 +15,19 @@ const About = () => {
         <h4>0. About me</h4>
       </Divider>
       <div className='lg:w-[50%] lg:ml-20'>
-        <h1>Chainarong Kieatmingmongkol</h1>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut necessitatibus temporibus impedit, molestiae
-          repellat, beatae voluptates asperiores nam iste error quod animi! Error debitis quam voluptas dignissimos,
-          eveniet accusamus quasi! Lorem ipsum, dolor sit
-        </p>
+        <Typography.Paragraph className='leading-relaxed'>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hello, I am a Full stack web developer with 3 years of experience in software
+          company from bangkok. I have a passion and enjoy to learn about coding with newly trends. <br /> In my career,
+          I have had the opportunity to work with top instructor about coding and surrounded by people with knowledge
+          and abilities, which has allowed me to develop a strong set of skills in Angular and React.
+        </Typography.Paragraph>
+
+        <Typography.Paragraph className='leading-relaxed'>
+          I am constantly seeking new challenges and opportunities to grow both personally and professionally. Thank you
+          for taking the time to learn a little bit about me. <br /> I look forward to getting to know you and working
+          together in the future.
+        </Typography.Paragraph>
+
         <div className='mt-10 flex items-center gap-x-4'>
           <Button className={`flex items-center hover:scale-110 ${theme === 'light' ? 'btn-light' : 'btn-dark'}`}>
             <PrinterOutlined />

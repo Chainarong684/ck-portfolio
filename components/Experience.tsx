@@ -12,7 +12,7 @@ const Experience = () => {
       avatar: '/assets/images/codemobiles-logo.svg',
       description: 'Software house, Tech company, Training, Outsource',
       content:
-        'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+        'My first journy, Codemobiles is softwere company there have many product and that give me the opportunity to work in many tech stack. and here teach me to be Full stack developer for the reason that have to develop frontend and backend also by my self.',
       displayImage1: '/assets/images/codemobiles-01.svg',
       displayImage2: '/assets/images/codemobiles-02.png',
       role: 'Developer',

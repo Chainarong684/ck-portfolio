@@ -145,7 +145,7 @@ const Project = () => {
           renderItem={(item) => (
             <List.Item style={{ padding: 10, margin: 0 }}>
               <div
-                className='flex flex-col shadow-lg rounded-xl transition hover:scale-105 w-[300px] h-[300px] hover:cursor-pointer'
+                className='flex flex-col shadow-lg rounded-xl transition hover:scale-105 w-[300px] h-[300px] hover:cursor-pointer mx-auto'
                 onClick={() => handleSelectProject(item.index)}>
                 <Image
                   className='rounded-t-xl object-cover object-top h-[150px]'
