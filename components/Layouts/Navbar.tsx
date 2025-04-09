@@ -1,17 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Menu, MenuProps, Switch } from 'antd'
 import { CloudOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getCurrentTheme, toggleTheme } from '@/redux/themeSlice'
+import { getCurrentTheme, toggleTheme, initialTheme } from '@/redux/themeSlice'
 
 const Navbar = () => {
   const theme = useSelector(getCurrentTheme)
   const dispatch = useDispatch()
 
   const [current, setCurrent] = useState('about')
+
+  useEffect(() => {
+    const randomTheme = Math.random() > 0.5 ? 'light' : 'dark'
+    dispatch(initialTheme(randomTheme))
+  }, [dispatch, theme])
 
   const handleChangeTheme = () => {
     dispatch(toggleTheme())

@@ -20,7 +20,22 @@ const Experience = () => {
       experience: '3 Years'
     },
     {
-      href: '#',
+      href: 'https://oma-chareef.com/',
+      title: `Omachareef`,
+      avatar: '/assets/images/oma-logo.svg',
+      description: 'Meat Factory, beef-chicken wholesaler',
+      content:
+        'After gaining valuable experience in both operational and technology roles, I am eager to expand into the field of management. I have been given the opportunity to introduce new technologies, knowledge, and a fresh, next-generation perspective to help drive the organization forward aiming to elevate its position as a leading provider of beef and chicken products in the meat industry.',
+      // content:
+      //   'หลังจากสั่งสมประสบการณ์ในสายงานพนักงานและเทคโนโลยีมาระยะหนึ่ง ฉันมีความตั้งใจที่จะขยายขอบเขตการทำงานไปสู่ด้านบริหาร โดยฉันได้รับโอกาสให้นำเทคโนโลยีสมัยใหม่ องค์ความรู้ และมุมมองของคนรุ่นใหม่ มาช่วยพัฒนาองค์กร เพื่อยกระดับศักยภาพการแข่งขันของบริษัทในฐานะผู้นำด้านเนื้อวัวและเนื้อไก่ในตลาดเนื้อสัตว์ของตลาดไท',
+      displayImage1: '/assets/images/oma-01.JPG',
+      displayImage2: '/assets/images/oma-02.JPG',
+      role: 'Managing Director',
+      hireType: 'Full Time',
+      experience: '1 Years'
+    },
+    {
+      href: '',
       title: `Looking for new opportunity and new challenge`,
       avatar: '',
       description: '',
@@ -87,7 +102,11 @@ const Experience = () => {
             }>
             <List.Item.Meta
               avatar={item.avatar ? <Avatar size='large' src={item.avatar} /> : <Avatar size='large'>CK</Avatar>}
-              title={<Link href={item.href}>{item.title}</Link>}
+              title={
+                <Link target='_blank' href={item.href}>
+                  {item.title}
+                </Link>
+              }
               description={item.description}
             />
             {item.content}

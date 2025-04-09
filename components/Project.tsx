@@ -1,123 +1,136 @@
 import { Button, Divider, List } from 'antd'
 import Image from 'next/image'
-import React, { ReactHTML, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Stack from './Stack'
 import { ExportOutlined } from '@ant-design/icons'
 import Link from 'next/link'
 import CustomModal from './CustomModal'
 
+const data = [
+  {
+    id: 0,
+    image: '/assets/images/projects/posposco.png',
+    alt: 'posposco',
+    title: 'POSPOS',
+    description: 'หน้าเว็บหลักแสดงรายละเอียดโปรแกรมสินค้า บทความและอุปกรณ์รวมถึงระบบสร้างใบเสนอราคา',
+    url: 'https://pospos.co',
+    tools: 'EJS, MongoDB'
+  },
+  {
+    id: 1,
+    image: '/assets/images/projects/goposposco.png',
+    alt: 'goposposco',
+    title: 'ระบบ Point of sale (POS)',
+    description: 'POSPOS ระบบขายสินค้าและบริหารจัดการสต็อกสินค้าและลูกค้า(CRM) แสดงสรุปรายงานต่างๆ',
+    url: 'https://go.pospos.co',
+    tools: 'Angular, Node.js, MongoDB'
+  },
+  {
+    id: 2,
+    image: '/assets/images/projects/shopposposco.png',
+    alt: 'shopposposco',
+    title: 'ระบบ E-commerce',
+    description: 'ร้านค้าออนไลน์ เชื่อมต่อกับระบบ POSPOS แสดงรายการสินค้า รับออเดอร์เมื่อลูกค้าเลือกสินค้าและชำระเงิน',
+    url: 'https://shop.pospos.co',
+    tools: 'Next.js, Nest.js, MongoDB'
+  },
+  {
+    id: 3,
+    image: '/assets/images/projects/hr.png',
+    alt: 'hrzoft',
+    title: 'HR-Zoft',
+    description: 'หน้าเว็บหลัก แสดงข้อมูล บทความ และรายละเอียดของระบบ HR-Zoft',
+    url: 'https://hrzoft.com/',
+    tools: 'Next.js'
+  },
+  {
+    id: 4,
+    image: '/assets/images/projects/gohr.png',
+    alt: 'gohrzoft',
+    title: 'ระบบ บริหารจัดการทรัพยากรบุคคล(HR)',
+    description: 'บริหารจัดการพนักงานเข้า-ออกงาน แสดงสิทธิและข้อมูลต่างๆของพนักงานในบริษัทรวมถึงสรุปรายงาน',
+    url: 'https://go.hrzoft.com/',
+    tools: 'React, Nest.js, MongoDB'
+  },
+  {
+    id: 5,
+    image: '/assets/images/projects/portal.png',
+    alt: 'portal',
+    title: 'ระบบ Portal',
+    description: 'Admin Portal หน้าบริหารจัดการลูกค้าและการแสดงผลที่หน้าเว็บหลัก บทความ, แพคเกจ, อุปกรณ์',
+    url: '',
+    tools: 'React, Nest.js, MongoDB'
+  },
+  {
+    id: 6,
+    image: '/assets/images/projects/sdu.png',
+    alt: 'sdu',
+    title: 'ระบบวัดและแสดงผลค่าฝุ่นละอองภายในมหาวิทยาลัยสวนดุสิต',
+    description: 'วัดค่าฝุ่นละอองภายในมหาวิทยาลัยโดยรับค่าจากเซนเซอร์และเก็บลงฐานข้อมูล',
+    url: 'http://5911011940035.sci.dusit.ac.th/index.php',
+    tools: 'PHP, MySQL, NodeMCU'
+  },
+  {
+    id: 7,
+    image: '/assets/images/projects/stripe-checkout.png',
+    alt: 'stripe',
+    title: 'ระบบ Payment Gateway (Stripe)',
+    description:
+      'การรับชำระเงินที่มาตรฐาน ผ่านบัตรเดบิต-เครดิต ธนาคารภายในหรือนอก และช่องทางชำระเงินออนไลน์รวมถึง QR Scan',
+    url: 'https://stripe.com/en-th',
+    tools: 'Stripe'
+  },
+  {
+    id: 8,
+    image: '/assets/images/projects/2c2p-checkout.png',
+    alt: '2c2p',
+    title: 'ระบบ Payment Gateway (2C2P)',
+    description:
+      'การรับชำระเงินที่มาตรฐาน ผ่านบัตรเดบิต-เครดิต ธนาคารภายในหรือนอก และช่องทางชำระเงินออนไลน์รวมถึง QR Scan',
+    url: 'https://2c2p.com/',
+    tools: '2C2P'
+  },
+  {
+    id: 9,
+    image: '/assets/images/projects/gopos.png',
+    alt: '2c2p',
+    title: 'Landing Page',
+    description: 'หน้าเว็บแสดงรายละเอียดสินค้าและอุปกรณ์',
+    url: '',
+    tools: 'HTML, CSS, Javascript'
+  },
+  {
+    id: 10,
+    image: '/assets/images/projects/policy.jpg',
+    alt: 'more',
+    title: 'More',
+    description: 'Another project that can not present by privacy and terms condition of client',
+    url: '',
+    tools: '🤐'
+  }
+]
+
 const Project = () => {
+  const [projects, setProjects] = useState<any[]>([])
   const [openedModal, setOpenedModal] = useState(false)
   const [selectedProject, setSelectedProject] = useState(0)
 
-  const data = [
-    {
-      index: 0,
-      image: '/assets/images/projects/posposco.png',
-      alt: 'posposco',
-      title: 'POSPOS',
-      description: 'หน้าเว็บหลักแสดงรายละเอียดโปรแกรมสินค้า บทความและอุปกรณ์รวมถึงระบบสร้างใบเสนอราคา',
-      url: 'https://pospos.co',
-      tools: 'EJS, MongoDB'
-    },
-    {
-      index: 1,
-      image: '/assets/images/projects/goposposco.png',
-      alt: 'goposposco',
-      title: 'ระบบ Point of sale (POS)',
-      description: 'POSPOS ระบบขายสินค้าและบริหารจัดการสต็อกสินค้าและลูกค้า(CRM) แสดงสรุปรายงานต่างๆ',
-      url: 'https://go.pospos.co',
-      tools: 'Angular, Node.js, MongoDB'
-    },
-    {
-      index: 2,
-      image: '/assets/images/projects/shopposposco.png',
-      alt: 'shopposposco',
-      title: 'ระบบ E-commerce',
-      description:
-        'ร้านค้าออนไลน์ เชื่อมต่อกับระบบ POSPOS แสดงรายการสินค้า รับออเดอร์เมื่อลูกค้าเลือกสินค้าและชำระเงิน',
-      url: 'https://shop.pospos.co',
-      tools: 'Next.js, Nest.js, MongoDB'
-    },
-    {
-      index: 3,
-      image: '/assets/images/projects/hr.png',
-      alt: 'hrzoft',
-      title: 'HR-Zoft',
-      description: 'หน้าเว็บหลัก แสดงข้อมูล บทความ และรายละเอียดของระบบ HR-Zoft',
-      url: 'https://hrzoft.com/',
-      tools: 'Next.js'
-    },
-    {
-      index: 4,
-      image: '/assets/images/projects/gohr.png',
-      alt: 'gohrzoft',
-      title: 'ระบบ บริหารจัดการทรัพยากรบุคคล(HR)',
-      description:
-        'บริหารจัดการพนักงาน การเข้า-ออกงาน คำขอต่างๆ แสดงสิทธิและข้อมูลต่างๆของพนักงานในบริษัทรวมถึงสรุปรายงาน',
-      url: 'https://go.hrzoft.com/',
-      tools: 'React, Nest.js, MongoDB'
-    },
-    {
-      index: 5,
-      image: '/assets/images/projects/portal.png',
-      alt: 'portal',
-      title: 'ระบบ Portal',
-      description: 'Admin Portal หน้าบริหารจัดการลูกค้าและการแสดงผลที่หน้าเว็บหลัก บทความ, แพคเกจ, อุปกรณ์',
-      url: '',
-      tools: 'React, Nest.js, MongoDB'
-    },
-    {
-      index: 6,
-      image: '/assets/images/projects/sdu.png',
-      alt: 'sdu',
-      title: 'ระบบวัดและแสดงผลค่าฝุ่นละอองภายในมหาวิทยาลัยสวนดุสิต',
-      description: 'วัดค่าฝุ่นละอองภายในมหาวิทยาลัยโดยรับค่าจากเซนเซอร์และเก็บลงฐานข้อมูล(beta)',
-      url: 'http://5911011940035.sci.dusit.ac.th/index.php',
-      tools: 'PHP, MySQL, NodeMCU'
-    },
-    {
-      index: 7,
-      image: '/assets/images/projects/stripe-checkout.png',
-      alt: 'stripe',
-      title: 'ระบบ Payment Gateway (Stripe)',
-      description:
-        'การรับชำระเงินที่มาตรฐาน ผ่านบัตรเดบิต-เครดิต ธนาคารภายในหรือนอก และช่องทางชำระเงินออนไลน์รวมถึง QR Scan',
-      url: 'https://stripe.com/en-th',
-      tools: 'Stripe'
-    },
-    {
-      index: 8,
-      image: '/assets/images/projects/2c2p-checkout.png',
-      alt: '2c2p',
-      title: 'ระบบ Payment Gateway (2C2P)',
-      description:
-        'การรับชำระเงินที่มาตรฐาน ผ่านบัตรเดบิต-เครดิต ธนาคารภายในหรือนอก และช่องทางชำระเงินออนไลน์รวมถึง QR Scan',
-      url: 'https://2c2p.com/',
-      tools: '2C2P'
-    },
-    {
-      index: 9,
-      image: '/assets/images/projects/gopos.png',
-      alt: '2c2p',
-      title: 'Landing Page',
-      description: 'หน้าเว็บแสดงรายละเอียดสินค้าและอุปกรณ์',
-      url: '',
-      tools: 'HTML, CSS, Javascript'
-    },
-    {
-      index: 10,
-      image: '/assets/images/projects/policy.jpg',
-      alt: 'more',
-      title: 'More',
-      description: 'Another project that can not present by privacy and terms condition of client',
-      url: '',
-      tools: '🤐'
+  const shuffleArray = (arr: any[]) => {
+    const copied = [...arr] // avoid mutating original
+    for (let i = copied.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[copied[i], copied[j]] = [copied[j], copied[i]]
     }
-  ]
+    return copied
+  }
 
-  const handleSelectProject = (index: number) => {
-    setSelectedProject(index)
+  useEffect(() => {
+    const newData = shuffleArray(data)
+    setProjects(newData)
+  }, [])
+
+  const handleSelectProject = (id: number) => {
+    setSelectedProject(id)
     setOpenedModal(true)
   }
 
@@ -137,7 +150,7 @@ const Project = () => {
             sm: 2,
             md: 2
           }}
-          dataSource={data}
+          dataSource={projects}
           pagination={{
             align: 'center',
             pageSize: 6
@@ -146,7 +159,7 @@ const Project = () => {
             <List.Item style={{ padding: 10, margin: 0 }}>
               <div
                 className='flex flex-col shadow-lg rounded-xl transition hover:scale-105 w-[300px] h-[300px] hover:cursor-pointer mx-auto'
-                onClick={() => handleSelectProject(item.index)}>
+                onClick={() => handleSelectProject(item.id)}>
                 <Image
                   className='rounded-t-xl object-cover object-top h-[150px]'
                   alt={item.alt}
@@ -159,7 +172,7 @@ const Project = () => {
                   <div className='flex'>
                     <b>{item.title}</b>
                   </div>
-                  <div className='flex-1'>&nbsp;&nbsp;&nbsp;&nbsp;{item.description}</div>
+                  <div className='flex-1 indent-8'>{item.description}</div>
                   <div className='flex items-center justify-between border-t'>
                     <div className='flex-1'>{item.tools}</div>
                     <Link href={item.url} target='_blank'>
