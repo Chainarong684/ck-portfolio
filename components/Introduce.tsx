@@ -10,8 +10,8 @@ const Introduce = () => {
         <h2 className='p-5'>A Front end and Back end Developer</h2>
         <Typography.Paragraph className='w-[500px] leading-relaxed'>
           <pre>
-            “const = (Programmer or Developer) =&gt; it mean an organism that converts <u>caffeine</u> into code,
-            usually late at nite.”
+            “const = (Programmer or Developer) =&gt; it mean an organism that converts <u>caffeine</u> into code usually
+            late at nite.”
           </pre>
         </Typography.Paragraph>
       </div>
