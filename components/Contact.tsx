@@ -12,7 +12,7 @@ const Contact = () => {
       <Divider>
         <h4>3. Get In Touch</h4>
       </Divider>
-      <div className='flex flex-col items-center w-[400px] mx-auto'>
+      <div className='flex flex-col items-center w-full lg:w-[400px] mx-auto'>
         <Typography.Paragraph className=''>
           Hi there, Thank you for taking your valuable time to visit my website. If you have any questions please let me
           know , or just want to say hello, i would like to hear from you.
