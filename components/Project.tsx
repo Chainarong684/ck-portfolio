@@ -6,7 +6,17 @@ import { ExportOutlined } from '@ant-design/icons'
 import Link from 'next/link'
 import CustomModal from './CustomModal'
 
-const data = [
+interface ProjectData {
+  id: number
+  image: string
+  alt: string
+  title: string
+  description: string
+  url: string
+  tools: string
+}
+
+const data: ProjectData[] = [
   {
     id: 0,
     image: '/assets/images/projects/posposco.png',
@@ -111,17 +121,21 @@ const data = [
 ]
 
 const Project = () => {
-  const [projects, setProjects] = useState<any[]>([])
+  const [projects, setProjects] = useState<ProjectData[]>(data)
   const [openedModal, setOpenedModal] = useState(false)
-  const [selectedProject, setSelectedProject] = useState(0)
+  const [selectedProject, setSelectedProject] = useState<ProjectData>()
 
-  const shuffleArray = (arr: any[]) => {
-    const copied = [...arr] // avoid mutating original
-    for (let i = copied.length - 1; i > 0; i--) {
+  const shuffleArray = (arr: ProjectData[]) => {
+    const fixedItem = arr.find((item) => item.id === 10)
+    const filtered = arr.filter((item) => item.id !== 10)
+
+    const shuffled = [...filtered]
+    for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
-      ;[copied[i], copied[j]] = [copied[j], copied[i]]
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
-    return copied
+
+    return fixedItem ? [...shuffled, fixedItem] : shuffled
   }
 
   useEffect(() => {
@@ -129,8 +143,8 @@ const Project = () => {
     setProjects(newData)
   }, [])
 
-  const handleSelectProject = (id: number) => {
-    setSelectedProject(id)
+  const handleSelectProject = (data: ProjectData) => {
+    setSelectedProject(data)
     setOpenedModal(true)
   }
 
@@ -159,7 +173,7 @@ const Project = () => {
             <List.Item style={{ padding: 10, margin: 0 }}>
               <div
                 className='flex flex-col shadow-lg rounded-xl transition hover:scale-105 w-[300px] h-[300px] hover:cursor-pointer mx-auto'
-                onClick={() => handleSelectProject(item.id)}>
+                onClick={() => handleSelectProject(item)}>
                 <Image
                   className='rounded-t-xl object-cover object-top h-[150px]'
                   alt={item.alt}
@@ -194,12 +208,14 @@ const Project = () => {
         <Stack />
       </div>
 
-      <CustomModal isOpened={openedModal} handleClose={() => setOpenedModal(false)}>
-        {data[selectedProject].title}
-        <div className='flex justify-center'>
-          <Image src={data[selectedProject].image} width={300} height={300} alt={data[selectedProject].alt} />
-        </div>
-      </CustomModal>
+      {selectedProject && (
+        <CustomModal isOpened={openedModal} handleClose={() => setOpenedModal(false)}>
+          {selectedProject.title}
+          <div className='flex justify-center'>
+            <Image src={selectedProject.image} width={500} height={500} alt={selectedProject.alt} />
+          </div>
+        </CustomModal>
+      )}
     </section>
   )
 }

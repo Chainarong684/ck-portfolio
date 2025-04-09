@@ -1,15 +1,36 @@
 import { getCurrentTheme } from '@/redux/themeSlice'
 import { Button, Divider, Typography } from 'antd'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Social from './Social'
 import { PrinterOutlined } from '@ant-design/icons'
+import CustomModal from './CustomModal'
 
 const About = () => {
   const theme = useSelector(getCurrentTheme)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
 
+  const [openedModal, setOpenedModal] = useState(false)
   const [hovered, setHovered] = useState(false)
+
+  const handleResume = () => {
+    const link = document.createElement('a')
+    link.href = '/assets/ck-resume.pdf'
+    link.download = 'ck-resume.pdf'
+    link.click()
+
+    setOpenedModal(true)
+
+    handlePrint()
+  }
+
+  const handlePrint = () => {
+    setTimeout(() => {
+      iframeRef.current?.contentWindow?.focus()
+      iframeRef.current?.contentWindow?.print()
+    }, 500)
+  }
 
   return (
     <section id='about' className='py-10 h-[600px] relative'>
@@ -31,7 +52,9 @@ const About = () => {
         </Typography.Paragraph>
 
         <div className='mt-10 flex items-center gap-x-4'>
-          <Button className={`flex items-center hover:scale-110 ${theme === 'light' ? 'btn-light' : 'btn-dark'}`}>
+          <Button
+            className={`flex items-center hover:scale-110 ${theme === 'light' ? 'btn-light' : 'btn-dark'}`}
+            onClick={() => handleResume()}>
             <PrinterOutlined />
             Resume
           </Button>
@@ -39,13 +62,13 @@ const About = () => {
         </div>
       </div>
 
-      <Image
+      {/* <Image
         className='block lg:hidden mx-auto py-10'
         src={hovered ? '/assets/images/avatar02.JPEG' : '/assets/images/avatar01.JPEG'}
         width={150}
         height={200}
         alt='avatar-photo'
-      />
+      /> */}
 
       <div
         className='hidden lg:flex group/box'
@@ -60,6 +83,22 @@ const About = () => {
           alt='avatar-photo'
         />
       </div>
+
+      <CustomModal isOpened={openedModal} handleClose={() => setOpenedModal(false)}>
+        CK-Resume Preview
+        <div className='flex justify-center'>
+          <Image
+            onClick={() => handlePrint()}
+            className='cursor-pointer'
+            src={'/assets/images/ck-resume.jpg'}
+            width={500}
+            height={500}
+            alt={'ck-resume'}
+          />
+        </div>
+      </CustomModal>
+
+      <iframe ref={iframeRef} src='/assets/ck-resume.pdf' style={{ display: 'none' }} title='Print Resume' />
     </section>
   )
 }
